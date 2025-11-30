@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/airdrops-app/:path*",
+      "destination": "https://airdrops-daily-sh9h.vercel.app/airdrops-app/:path*"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/:path*"
+    }
+  ]
+}
