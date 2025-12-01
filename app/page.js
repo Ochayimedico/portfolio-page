@@ -5,7 +5,7 @@ export default function Home() {
         <a className="mb-4" href="http://airdrops.ochayimedico.xyz">
           Airdrops App
         </a>
-        <a className="mt-1" href="http://ochayimedico.xyz/todo-and-task-app">
+        <a className="mt-1" href="http://todosandtasks.ochayimedico.xyz">
           Todo and Task App
         </a>
       </main>
