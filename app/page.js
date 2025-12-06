@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import Typewriter from "typewriter-effect";
+// import Typewriter from "typewriter-effect";
 
 export default function Home() {
   return (
@@ -19,14 +19,8 @@ export default function Home() {
       </nav>
       <main className="mt-4 flex w-full  flex-col mx-4 lg:mx-8 items-center justify-between text-[2rem]">
         <h2 className="text-center">Hello world, welcome to my world...</h2>
-        {/* <Typewriter
-          options={{
-            strings: ["Hello world", "welcome to my world..."],
-            autoStart: true,
-            loop: true,
-          }}
-        /> */}
-        {/* <a
+
+        <a
           target="_blank"
           rel="noopener noreferrer"
           className="mb-4"
@@ -41,7 +35,7 @@ export default function Home() {
           href="http://todosandtasks.ochayimedico.xyz"
         >
           Todo and Task App
-        </a> */}
+        </a>
       </main>
     </div>
   );
