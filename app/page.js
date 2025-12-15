@@ -334,7 +334,7 @@ export default function Home() {
               },
             },
           }}
-          className="mt-4 mb-4 text-black md:text-[2rem] lg:text-[2.5rem] text-[1.5rem]"
+          className="mt-4 mb-4 text-black md:text-[2rem] lg:text-[2.5rem] text-[1.65rem]"
         >
           Ochayi is a pharmacist and graphics designer who fell in love with
           website design and frontend development.
