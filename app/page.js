@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
 import Logo from "../public/logo.png";
-import { AnimatePresence } from "framer-motion";
+import myPic from "../public/me.jpg";
 
 export default function Home() {
   const [showMenu, setShowMenu] = useState(false);
@@ -35,9 +35,9 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="w-full flex flex-row justify-between fixed top-10 z-20 px-10"
+          className="w-full flex flex-row justify-end fixed top-10 z-20 px-10"
         >
-          <Image width={50} height={50} src={Logo} alt="logo"></Image>
+          {/* <Image width={50} height={50} src={Logo} alt="logo"></Image> */}
           <motion.div
             whileHover={{ scale: 1.1 }}
             transition={{ duration: 0.5 }}
@@ -72,7 +72,6 @@ export default function Home() {
           </motion.div>
         </motion.nav>
       )}
-
       {/* hero section */}
       <section className="flex w-full flex-col items-center justify-center text-[2rem] mt-35">
         <p className="absolute uppercase -rotate-90 -left-25 text-sm top-100 tracking-[0.3rem]">
@@ -110,7 +109,6 @@ export default function Home() {
           Todo and Task App
         </a> */}
       </section>
-
       {/* about me  */}
       <motion.section
         initial={{
@@ -240,6 +238,110 @@ export default function Home() {
             perfect.
           </motion.p>
         </motion.div>
+      </motion.section>
+      {/* picture */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        variants={{
+          hidden: { borderRadius: "0" },
+          visible: {
+            borderRadius: "60%/ 0 0 10% 10%",
+            transition: {
+              duration: 0.5,
+              staggerChildren: 0.8,
+              delayChildren: 0,
+            },
+          },
+        }}
+        className="bg-[#E7D4B1] w-full p-8 "
+      >
+        <motion.p
+          variants={{
+            hidden: { opacity: 0, y: 30 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: {
+                duration: 2,
+                delay: 1,
+                type: "spring",
+                stiffness: 100,
+                damping: 12,
+                ease: "easeInOut",
+              },
+            },
+          }}
+          className="mt-4  text-center font-semibold text-[#3f2728] md:text-[2rem] lg:text-[2.5rem] text-[1.5rem]"
+        >
+          The Face Behind The Code ↴
+        </motion.p>
+
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, scale: 0 },
+            visible: {
+              opacity: 1,
+              scale: 1,
+              transition: {
+                duration: 3.5,
+                delay: 1,
+                type: "spring",
+                stiffness: 100,
+                damping: 12,
+                ease: "easeInOut",
+              },
+            },
+          }}
+          className="mx-auto w-max bg-[#e7d4b1] my-6 "
+        >
+          <Image
+            variants={{
+              hidden: { opacity: 0, scale: 0 },
+              visible: {
+                opacity: 1,
+                scale: 1,
+                transition: {
+                  duration: 3.5,
+                  delay: 1,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 12,
+                  ease: "easeInOut",
+                },
+              },
+            }}
+            className="mx-auto rounded-2xl w-[440px] lg:w-[700px]"
+            src={myPic}
+            // width={500}
+            // height={500}
+            alt="my picture"
+          ></Image>
+        </motion.div>
+        <motion.p
+          variants={{
+            hidden: { opacity: 0, y: 30 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: {
+                duration: 2,
+                delay: 1.75,
+                type: "spring",
+                stiffness: 100,
+                damping: 12,
+                ease: "easeInOut",
+              },
+            },
+          }}
+          className="mt-4 mb-4 text-black md:text-[2rem] lg:text-[2.5rem] text-[1.5rem]"
+        >
+          Ochayi is a pharmacist and graphics designer who fell in love with
+          website design and frontend development.
+          <br />
+          The ultimate goal is user satisfaction after when using an app created
+          by me.
+        </motion.p>
       </motion.section>
     </div>
   );
