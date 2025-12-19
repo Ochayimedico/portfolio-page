@@ -126,7 +126,7 @@ export default function Home() {
           bounce: 0.6,
           ease: "easeInOut",
         }}
-        className="bg-[#3f2728] w-full relative"
+        className="bg-[#3f2728] w-full relative h-dvh"
       >
         <motion.div
           className="mt-2 p-8 text-white text-center md:text-[1.85rem] lg:text-[2.25rem] text-[1.35rem] w-[90%] md:w-[70%] lg:w-[60%] mx-auto"
@@ -253,7 +253,7 @@ export default function Home() {
             },
           },
         }}
-        className="bg-[#E7D4B1] w-full p-8  h-max"
+        className="bg-[#E7D4B1] w-full p-8  h-dvh"
       >
         <motion.p
           variants={{
