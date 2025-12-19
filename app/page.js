@@ -253,7 +253,7 @@ export default function Home() {
             },
           },
         }}
-        className="bg-[#E7D4B1] w-full p-8  h-dvh"
+        className="bg-[#E7D4B1] w-full p-8  "
       >
         <motion.p
           variants={{
