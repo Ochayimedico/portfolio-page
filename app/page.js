@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
-import Logo from "../public/logo.png";
+
 import myPic from "../public/me.jpg";
 
 export default function Home() {
@@ -37,7 +37,6 @@ export default function Home() {
           transition={{ duration: 0.4, ease: "easeOut" }}
           className="w-full flex flex-row justify-end fixed top-10 z-20 px-10"
         >
-          {/* <Image width={50} height={50} src={Logo} alt="logo"></Image> */}
           <motion.div
             whileHover={{ scale: 1.1 }}
             transition={{ duration: 0.5 }}
@@ -91,23 +90,6 @@ export default function Home() {
             scroll down pls
           </p>
         </div>
-
-        {/* <a
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mb-4"
-          href="http://airdrops.ochayimedico.xyz"
-        >
-          Airdrops App
-        </a>
-        <a e7d4b1
-          target="_blank"
-          rel="noopener noreferrer"
-          className=""
-          href="http://todosandtasks.ochayimedico.xyz"
-        >
-          Todo and Task App
-        </a> */}
       </section>
       {/* about me  */}
       <motion.section
@@ -171,7 +153,7 @@ export default function Home() {
                   },
                 },
               }}
-              className="text-[#ffffff] text-center md:text-[2rem] lg:text-[2.5rem] text-[1.5rem] my-6 transition-all w-max mx-auto"
+              className="text-[#ffffff] text-center md:text-[2.25rem] lg:text-[2.5rem] text-[2rem] my-6 transition-all w-max mx-auto"
             >
               About Me
             </motion.h2>
@@ -365,14 +347,16 @@ export default function Home() {
           <div className="lg:w-[40%] md:w-[40%] mb-2 w-full flex flex-col text-black">
             <div className=" h-0.5 bg-[#3f2728] w-full mb-4"> </div>
             <p className="uppercase text-[0.85rem]">years of experience</p>
-            <p className="uppercase font-bold text-[4rem]">2+</p>
+            <p className="uppercase font-bold text-[4rem] text-[#3f2728]">2+</p>
           </div>
           <div className="lg:w-[40%] md:w-[40%]  w-full flex flex-col text-black">
             <div className=" h-0.5 bg-[#3f2728] w-full mb-4"> </div>
             <p className="uppercase text-[0.85rem]">
               number of projects completed
             </p>
-            <p className="uppercase font-bold text-[4rem]">over 10</p>
+            <p className="uppercase font-bold text-[4rem] text-[#3f2728]">
+              over 10
+            </p>
           </div>
         </motion.div>
       </motion.section>
@@ -390,10 +374,10 @@ export default function Home() {
           bounce: 0.6,
           ease: "easeInOut",
         }}
-        className="bg-[#3f2728] w-full relative"
+        className="bg-[#3f2728] w-full relative flex flex-col"
       >
         <motion.div
-          className="mt-2 p-8 text-white text-center md:text-[1.85rem] lg:text-[2.25rem] text-[1.35rem] w-[90%] md:w-[70%] lg:w-[60%] mx-auto"
+          className="mt-2 p-8 text-white text-center md:text-[1.85rem] lg:text-[2.25rem] text-[1.35rem] w-[90%] md:w-[70%] lg:w-[70%] mx-auto"
           initial="hidden"
           whileInView="visible"
           variants={{
@@ -476,29 +460,86 @@ export default function Home() {
               },
             }}
           >
-            These are the top projects I have worked on in the past months
+            These are the top projects I have worked on in the past.
           </motion.p>
 
-          <motion.div
-            variants={{
-              hidden: { opacity: 0, y: 30 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: {
-                  duration: 0.3,
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 12,
-                  ease: "easeInOut",
+          {/* projects list */}
+          <motion.div className="grid  w-full">
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    duration: 0.3,
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 12,
+                    ease: "easeInOut",
+                  },
                 },
-              },
-            }}
-            className="mt-8 text-left"
-          >
-            <motion.h2 className="text-[2.5rem]  font-bold text-[#e7d4b1]">
-              Airdrops App
-            </motion.h2>
+              }}
+              className="mt-8 text-left lg:w-[50%] flex flex-col border-2 border-[#e7d4b1] pl-4 border-r-transparent border-t-transparent  group"
+            >
+              <motion.h2 className="text-[2.5rem] font-bold text-[#e7d4b1]">
+                Airdrops App
+              </motion.h2>
+              <p className="lg:text-[1rem] text-[0.85rem] text-[#e7d4b1] w-max">
+                Created in 2025
+              </p>
+              <p className="lg:text-[1.25rem] text-[1rem] mt-4">
+                Allows users to create their own airdrops dashboard where they
+                can add, edit and delete airdrop projects. It uses Supabase as
+                Backend-as-a-Service (BAAS).
+              </p>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-right  mr-4  group text-[#e7d4b1]  hover:text-[#F9F4EB] lg:text-[1rem] text-[0.85rem] mt-6"
+                href="http://airdrops.ochayimedico.xyz"
+              >
+                click to enter
+                <span className="hover:translate-x-4 ml-2">→</span>
+              </a>
+            </motion.div>
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    duration: 0.3,
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 12,
+                    ease: "easeInOut",
+                  },
+                },
+              }}
+              className="border-2 border-[#e7d4b1] pl-4 border-r-transparent border-t-transparent mt-16 text-left lg:w-[50%]  flex flex-col justify-self-end"
+            >
+              <motion.h2 className="text-[2.5rem] leading-[1.2em] mb-2 font-bold text-[#e7d4b1]">
+                Todos and Tasks App
+              </motion.h2>
+              <p className="lg:text-[1rem] text-[0.85rem] text-[#e7d4b1] w-max">
+                Created in 2024
+              </p>
+              <p className="lg:text-[1.25rem] text-[1rem] mt-4">
+                Allows users to create their own todos and tasks and users can
+                add, edit and delete tasks or todos. It uses Supabase as
+                Backend-as-a-Service (BAAS).
+              </p>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-right mr-4 hover:text-[#F9F4EB] group text-[#e7d4b1] lg:text-[1rem] text-[0.85rem] mt-6"
+                href="http://todosandtasks.ochayimedico.xyz"
+              >
+                click to enter<span className=" ml-2">→</span>
+              </a>
+            </motion.div>
           </motion.div>
         </motion.div>
       </motion.section>
