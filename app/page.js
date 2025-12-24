@@ -5,6 +5,11 @@ import { useState } from "react";
 import Image from "next/image";
 
 import myPic from "../public/me.jpg";
+import whatsapp from "../public/social_media/whatsapp.png";
+import discord from "../public/social_media/discord.png";
+import linkedin from "../public/social_media/linkedin.png";
+import telegram from "../public/social_media/telegram.png";
+import twitter from "../public/social_media/twitter.png";
 
 //animation variants
 const fadeInUp = {
@@ -27,6 +32,34 @@ const fadeInUpFast = {
   visible: {
     opacity: 1,
     y: 0,
+    transition: {
+      duration: 0.3,
+      type: "spring",
+      stiffness: 100,
+      damping: 12,
+      ease: "easeInOut",
+    },
+  },
+};
+const fadeInLeftFast = {
+  hidden: { opacity: 0, x: -50 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.3,
+      type: "spring",
+      stiffness: 100,
+      damping: 12,
+      ease: "easeInOut",
+    },
+  },
+};
+const fadeInRightFast = {
+  hidden: { opacity: 0, x: 50 },
+  visible: {
+    opacity: 1,
+    x: 0,
     transition: {
       duration: 0.3,
       type: "spring",
@@ -382,10 +415,10 @@ export default function Home() {
             {projects.map((project, index) => (
               <motion.div
                 key={project.title}
-                variants={fadeInUpFast}
+                variants={index % 2 === 0 ? fadeInLeftFast : fadeInRightFast}
                 className={`${
                   index > 0 ? "mt-16" : "mt-8"
-                } text-left lg:w-[50%] flex flex-col border-2 border-[#e7d4b1] pl-4 border-r-transparent border-t-transparent rounded-4 ${
+                } text-left lg:w-[50%]  flex flex-col border-2 border-[#e7d4b1] pl-4 border-r-transparent border-t-transparent rounded-4 ${
                   project.alignSelf === "end" ? "justify-self-end" : ""
                 }`}
               >
@@ -442,13 +475,13 @@ export default function Home() {
           </motion.div>
 
           <motion.p className="text-black" variants={fadeInUpFast}>
-            A detailed list of the technological toolkit of what I have worked
-            with throughout my years of experience.
+            A detailed list of the technological toolkit that I have worked with
+            throughout my years of experience.
           </motion.p>
 
           <motion.div
             variants={fadeInUp}
-            className="grid md:gap-2 lg:gap-2 lg:grid-cols-2 text-left mt-12 lg:text-[1.35rem] text-[1rem]"
+            className="grid md:gap-2 lg:gap-2 lg:grid-cols-2 text-left mt-12 lg:text-[1.35rem] text-[1.15rem] "
           >
             <motion.div className=" my-4">
               <p className="text-black font-semibold ">
@@ -512,6 +545,130 @@ export default function Home() {
               </div>
             </motion.div>
           </motion.div>
+        </motion.div>
+      </motion.section>
+      {/* Contact Me */}
+      <motion.section
+        initial={{}}
+        whileInView={{}}
+        transition={springTransition}
+        className="bg-[#3f2728] w-full relative flex flex-col items-center justify-center"
+      >
+        <motion.div
+          className="mt-2 p-8 text-white text-center md:text-[1.85rem] lg:text-[2.25rem] text-[1.35rem] w-[90%] md:w-[70%] lg:w-[70%] mx-auto"
+          initial="hidden"
+          whileInView="visible"
+          variants={staggerContainer}
+        >
+          <motion.div
+            className="w-max relative mx-auto"
+            variants={staggerContainerFast}
+          >
+            <motion.h2
+              variants={fadeInUpFast}
+              className="text-[#e7d4b1] text-center md:text-[2rem] lg:text-[2.5rem] text-[1.5rem] mt-6 transition-all w-max mx-auto font-bold"
+            >
+              Contact Me
+            </motion.h2>
+            <motion.div
+              className="bg-[#e7d4b1] absolute lg:bottom-2 bottom-0 md:bottom-1 h-1"
+              variants={lineExpand}
+            />
+          </motion.div>
+        </motion.div>
+
+        <motion.div
+          variants={fadeInUpFast}
+          className="grid lg:gap-3 grid-cols-2 lg:grid-cols-3 md:grid-cols-2 text-white text-[1.2rem] text-[1.5rem] w-[90%] lg:w-[70% ] place-items-right mx-auto"
+        >
+          <motion.a
+            href="https://wa.link/orc2s4"
+            target="_blank"
+            rel="noopener noreferrer"
+            variants={fadeInUpFast}
+            className="my-2 flex flex-col items-center my-6 pointer-cursor "
+          >
+            <div className="bg-[#e7d4b1]  items-center flex justify-center rounded-2xl w-[60px] h-[60px] ">
+              <Image
+                src={whatsapp}
+                width={36}
+                height={36}
+                alt="whatsapp logo"
+              ></Image>
+            </div>
+            <p className="my-2">Whatsapp</p>
+          </motion.a>
+          <motion.a
+            href="https://x.com/__medico_"
+            target="_blank"
+            rel="noopener noreferrer"
+            variants={fadeInUpFast}
+            className=" flex flex-col items-center my-6 pointer-cursor"
+          >
+            <div className="bg-[#e7d4b1] items-center flex justify-center rounded-2xl w-[60px] h-[60px] ">
+              <Image
+                src={twitter}
+                width={36}
+                height={36}
+                alt="twitter logo"
+              ></Image>
+            </div>
+            <p className="my-2">X (Twitter)</p>
+          </motion.a>
+          <motion.a
+            href="https://discord.com/channels/942269085176201278"
+            target="_blank"
+            rel="noopener noreferrer"
+            variants={fadeInUpFast}
+            className=" flex flex-col items-center my-6 cursor-pointer "
+          >
+            <div className="bg-[#e7d4b1] items-center flex justify-center rounded-2xl w-[60px] h-[60px] ">
+              <Image
+                src={discord}
+                width={36}
+                height={36}
+                alt="discord logo"
+              ></Image>
+            </div>
+
+            <p className="my-2">Discord</p>
+          </motion.a>
+          <motion.a
+            href="https://www.linkedin.com/in/peter-ochayi-41a6b3186/"
+            target="_blank"
+            rel="noopener noreferrer"
+            variants={fadeInUpFast}
+            className="my-2 flex flex-col items-center my-6  cursor-pointer "
+          >
+            <div className="bg-[#e7d4b1] items-center flex justify-center rounded-2xl w-[60px] h-[60px] ">
+              <Image
+                src={linkedin}
+                width={36}
+                height={36}
+                alt="linkedin logo"
+              ></Image>
+            </div>
+
+            <p className="my-2">LinkedIn</p>
+          </motion.a>
+          <motion.a
+            href="https://t.me/@ochmed1"
+            target="_blank"
+            rel="noopener noreferrer"
+            variants={fadeInUpFast}
+            className="my-2 flex flex-col items-center my-6  cursor-pointer "
+          >
+            <div className="bg-[#e7d4b1] items-center flex justify-center rounded-2xl w-[60px] h-[60px] ">
+              <Image
+                src={telegram}
+                width={36}
+                height={36}
+                alt="telegram logo"
+              ></Image>
+            </div>
+
+            <p className="my-2">Telegram</p>
+          </motion.a>
         </motion.div>
       </motion.section>
     </div>
