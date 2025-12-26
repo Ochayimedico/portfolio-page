@@ -119,6 +119,9 @@ const springTransition = {
 export default function Home() {
   const [showMenuButton, setShowMenuButton] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  const closeMenuHandler = () => {
+    setShowMenu(false);
+  };
 
   const projects = [
     {
@@ -138,13 +141,20 @@ export default function Home() {
       alignSelf: "end",
     },
   ];
-  if (showMenu) {
-    return <Menu />;
-  }
 
   return (
     <div className="flex flex-col items-center relative">
+      <div className="flex flex-col items-center relative">
+        {showMenu && (
+          <Menu
+            setShowMenu={setShowMenu}
+            isOpen={showMenu}
+            closeMenuHandler={closeMenuHandler}
+          />
+        )}
+      </div>
       <motion.nav
+        id="home"
         onViewportLeave={() => setShowMenuButton(true)}
         onViewportEnter={() => setShowMenuButton(false)}
         className="relative flex flex-col items-center pt-4 pb-3 w-full z-20 border-transparent border-b-[#3f2728] border-2 fixed top-0 bg-[#E7D4B1] overflow-x-hidden"
@@ -156,25 +166,24 @@ export default function Home() {
         </h1>
         <ul className="flex flex-row font-semibold">
           <li className="mx-2 cursor-pointer">
-            {" "}
-            <Link href="#about">About</Link>{" "}
+            <Link href="#about">About</Link>
           </li>
           <li className="mx-2 cursor-pointer">
-            {" "}
-            <Link href="#projects">Projects</Link>{" "}
+            <Link href="#projects">Projects</Link>
           </li>
           <li className="mx-2 cursor-pointer">
-            {" "}
-            <Link href="#skills">Skills</Link>{" "}
+            <Link href="#skills">Skills</Link>
           </li>
           <li className="mx-2 cursor-pointer">
-            {" "}
-            <Link href="#contact">Contact</Link>{" "}
+            <Link href="#contacts">Contacts</Link>
           </li>
         </ul>
       </motion.nav>
       {showMenuButton && (
-        <motion.nav
+        <motion.button
+          onClick={() => {
+            setShowMenu(true);
+          }}
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
@@ -184,7 +193,7 @@ export default function Home() {
           <motion.div
             whileHover={{ scale: 1.1 }}
             transition={{ duration: 0.5 }}
-            className="bg-white rounded-full w-[50px] h-[50px] items-center flex justify-center"
+            className="bg-[#3f2728] rounded-full w-[50px] h-[50px] items-center flex justify-center"
           >
             <svg
               width="45px"
@@ -198,7 +207,7 @@ export default function Home() {
                   <path
                     id="Vector"
                     d="M5 17H13M5 12H19M11 7H19"
-                    stroke="#000000"
+                    stroke="#ffffff"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -207,7 +216,7 @@ export default function Home() {
               </g>
             </svg>
           </motion.div>
-        </motion.nav>
+        </motion.button>
       )}
 
       {/* Hero Section */}
