@@ -3,13 +3,14 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
-
 import myPic from "../public/me.jpg";
 import whatsapp from "../public/social_media/whatsapp.png";
 import discord from "../public/social_media/discord.png";
 import linkedin from "../public/social_media/linkedin.png";
 import telegram from "../public/social_media/telegram.png";
 import twitter from "../public/social_media/twitter.png";
+import Link from "next/link";
+import Menu from "./menu/menu";
 
 //animation variants
 const fadeInUp = {
@@ -116,6 +117,7 @@ const springTransition = {
 };
 
 export default function Home() {
+  const [showMenuButton, setShowMenuButton] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
 
   const projects = [
@@ -136,12 +138,15 @@ export default function Home() {
       alignSelf: "end",
     },
   ];
+  if (showMenu) {
+    return <Menu />;
+  }
 
   return (
     <div className="flex flex-col items-center relative">
       <motion.nav
-        onViewportLeave={() => setShowMenu(true)}
-        onViewportEnter={() => setShowMenu(false)}
+        onViewportLeave={() => setShowMenuButton(true)}
+        onViewportEnter={() => setShowMenuButton(false)}
         className="relative flex flex-col items-center pt-4 pb-3 w-full z-20 border-transparent border-b-[#3f2728] border-2 fixed top-0 bg-[#E7D4B1] overflow-x-hidden"
       >
         <div className="w-20 h-20 rounded-full absolute -left-12 bg-[#3f2728]"></div>
@@ -150,15 +155,25 @@ export default function Home() {
           Ochayi Peter
         </h1>
         <ul className="flex flex-row font-semibold">
-          <li className="mx-2 cursor-pointer">Home</li>
-          <li className="mx-2 cursor-pointer">About</li>
-          <li className="mx-2 cursor-pointer">Projects</li>
-          <li className="mx-2 cursor-pointer">Skills</li>
-          <li className="mx-2 cursor-pointer">Contact</li>
+          <li className="mx-2 cursor-pointer">
+            {" "}
+            <Link href="#about">About</Link>{" "}
+          </li>
+          <li className="mx-2 cursor-pointer">
+            {" "}
+            <Link href="#projects">Projects</Link>{" "}
+          </li>
+          <li className="mx-2 cursor-pointer">
+            {" "}
+            <Link href="#skills">Skills</Link>{" "}
+          </li>
+          <li className="mx-2 cursor-pointer">
+            {" "}
+            <Link href="#contact">Contact</Link>{" "}
+          </li>
         </ul>
       </motion.nav>
-
-      {showMenu && (
+      {showMenuButton && (
         <motion.nav
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -218,6 +233,7 @@ export default function Home() {
 
       {/* About Me */}
       <motion.section
+        id="about"
         initial={{ borderRadius: "0" }}
         whileInView={{ borderRadius: "60%/ 10% 10% 0 0" }}
         transition={springTransition}
@@ -293,7 +309,6 @@ export default function Home() {
         >
           The Face Behind The Code ↴
         </motion.p>
-
         <motion.div
           variants={{
             hidden: { opacity: 0, scale: 0, borderRadius: "60%/ 0 0 5% 5%" },
@@ -310,10 +325,10 @@ export default function Home() {
               },
             },
           }}
-          className="mx-auto w-max bg-[#e7d4b1] my-6"
+          className="mx-auto w-full max-w-[440px] lg:max-w-[650px] bg-[#e7d4b1] my-6 px-4"
         >
           <Image
-            className="mx-auto rounded-2xl w-[440px] lg:w-[700px]"
+            className="mx-auto rounded-2xl w-full h-auto"
             src={myPic}
             alt="my picture"
           />
@@ -379,6 +394,7 @@ export default function Home() {
 
       {/* my projects */}
       <motion.section
+        id="projects"
         initial={{}}
         whileInView={{}}
         transition={springTransition}
@@ -447,6 +463,7 @@ export default function Home() {
 
       {/* my skills */}
       <motion.section
+        id="skills"
         initial={{}}
         whileInView={{}}
         transition={springTransition}
@@ -547,8 +564,10 @@ export default function Home() {
           </motion.div>
         </motion.div>
       </motion.section>
+
       {/* Contact Me */}
       <motion.section
+        id="contact"
         initial={{}}
         whileInView={{}}
         transition={springTransition}
@@ -578,95 +597,96 @@ export default function Home() {
         </motion.div>
 
         <motion.div
-          variants={fadeInUpFast}
-          className="grid lg:gap-3 grid-cols-2 lg:grid-cols-3 md:grid-cols-2 text-white text-[1.2rem] text-[1.5rem] w-[90%] lg:w-[70% ] place-items-right mx-auto"
+          initial="hidden"
+          whileInView="visible"
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.3,
+                delayChildren: 1.25,
+              },
+            },
+          }}
+          className="grid lg:gap-3 grid-cols-2 lg:grid-cols-3 md:grid-cols-2 text-white text-[1.2rem] text-[1.5rem] w-[80%] lg:w-[60%] place-items-center mx-auto mb-8"
         >
           <motion.a
+            variants={fadeInUpFast}
             href="https://wa.link/orc2s4"
             target="_blank"
             rel="noopener noreferrer"
-            variants={fadeInUpFast}
-            className="my-2 flex flex-col items-center my-6 pointer-cursor "
+            className="flex flex-col items-center my-6 cursor-pointer w-max"
           >
-            <div className="bg-[#e7d4b1]  items-center flex justify-center rounded-2xl w-[60px] h-[60px] ">
+            <div className="bg-[#e7d4b1] items-center flex justify-center rounded-2xl w-[60px] h-[60px]">
               <Image
                 src={whatsapp}
                 width={36}
                 height={36}
                 alt="whatsapp logo"
-              ></Image>
+              />
             </div>
             <p className="my-2">Whatsapp</p>
           </motion.a>
+
           <motion.a
+            variants={fadeInUpFast}
             href="https://x.com/__medico_"
             target="_blank"
             rel="noopener noreferrer"
-            variants={fadeInUpFast}
-            className=" flex flex-col items-center my-6 pointer-cursor"
+            className="flex flex-col items-center my-6 cursor-pointer w-max"
           >
-            <div className="bg-[#e7d4b1] items-center flex justify-center rounded-2xl w-[60px] h-[60px] ">
-              <Image
-                src={twitter}
-                width={36}
-                height={36}
-                alt="twitter logo"
-              ></Image>
+            <div className="bg-[#e7d4b1] items-center flex justify-center rounded-2xl w-[60px] h-[60px]">
+              <Image src={twitter} width={36} height={36} alt="twitter logo" />
             </div>
             <p className="my-2">X (Twitter)</p>
           </motion.a>
+
           <motion.a
+            variants={fadeInUpFast}
             href="https://discord.com/channels/942269085176201278"
             target="_blank"
             rel="noopener noreferrer"
-            variants={fadeInUpFast}
-            className=" flex flex-col items-center my-6 cursor-pointer "
+            className="flex flex-col items-center my-6 cursor-pointer w-max"
           >
-            <div className="bg-[#e7d4b1] items-center flex justify-center rounded-2xl w-[60px] h-[60px] ">
-              <Image
-                src={discord}
-                width={36}
-                height={36}
-                alt="discord logo"
-              ></Image>
+            <div className="bg-[#e7d4b1] items-center flex justify-center rounded-2xl w-[60px] h-[60px]">
+              <Image src={discord} width={36} height={36} alt="discord logo" />
             </div>
-
             <p className="my-2">Discord</p>
           </motion.a>
+
           <motion.a
+            variants={fadeInUpFast}
             href="https://www.linkedin.com/in/peter-ochayi-41a6b3186/"
             target="_blank"
             rel="noopener noreferrer"
-            variants={fadeInUpFast}
-            className="my-2 flex flex-col items-center my-6  cursor-pointer "
+            className="flex flex-col items-center my-6 cursor-pointer w-max"
           >
-            <div className="bg-[#e7d4b1] items-center flex justify-center rounded-2xl w-[60px] h-[60px] ">
+            <div className="bg-[#e7d4b1] items-center flex justify-center rounded-2xl w-[60px] h-[60px]">
               <Image
                 src={linkedin}
                 width={36}
                 height={36}
                 alt="linkedin logo"
-              ></Image>
+              />
             </div>
-
             <p className="my-2">LinkedIn</p>
           </motion.a>
+
           <motion.a
+            variants={fadeInUpFast}
             href="https://t.me/@ochmed1"
             target="_blank"
             rel="noopener noreferrer"
-            variants={fadeInUpFast}
-            className="my-2 flex flex-col items-center my-6  cursor-pointer "
+            className="flex flex-col items-center my-6 cursor-pointer w-max"
           >
-            <div className="bg-[#e7d4b1] items-center flex justify-center rounded-2xl w-[60px] h-[60px] ">
+            <div className="bg-[#e7d4b1] items-center flex justify-center rounded-2xl w-[60px] h-[60px]">
               <Image
                 src={telegram}
                 width={36}
                 height={36}
                 alt="telegram logo"
-              ></Image>
+              />
             </div>
-
             <p className="my-2">Telegram</p>
           </motion.a>
         </motion.div>
