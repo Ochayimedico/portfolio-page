@@ -145,13 +145,11 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center relative">
       <div className="flex flex-col items-center relative">
-        {showMenu && (
-          <Menu
-            setShowMenu={setShowMenu}
-            isOpen={showMenu}
-            closeMenuHandler={closeMenuHandler}
-          />
-        )}
+        <Menu
+          setShowMenu={setShowMenu}
+          isOpen={showMenu}
+          closeMenuHandler={closeMenuHandler}
+        />
       </div>
       <motion.nav
         id="home"
@@ -196,8 +194,8 @@ export default function Home() {
             className="bg-[#3f2728] rounded-full w-[50px] h-[50px] items-center flex justify-center"
           >
             <svg
-              width="45px"
-              height="45px"
+              width="40px"
+              height="40px"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -700,6 +698,179 @@ export default function Home() {
           </motion.a>
         </motion.div>
       </motion.section>
+      {/* Footer */}
+      <motion.footer
+        initial="hidden"
+        whileInView="visible"
+        variants={{
+          hidden: {},
+          visible: {
+            transition: {
+              staggerChildren: 0.2,
+              delayChildren: 0.3,
+            },
+          },
+        }}
+        className="bg-[#1B1508] w-full relative flex flex-col items-center py-12 px-8"
+      >
+        {/* Top decorative line */}
+        <motion.div
+          variants={{
+            hidden: { width: "0%", opacity: 0 },
+            visible: {
+              width: "80%",
+              opacity: 1,
+              transition: { duration: 1, ease: "easeInOut" },
+            },
+          }}
+          className="h-0.5 bg-[#e7d4b1] mb-8"
+        />
+
+        <div className="max-w-6xl w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 mb-8">
+          {/* Brand Section */}
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.5 },
+              },
+            }}
+            className="flex flex-col"
+          >
+            <h3 className="text-[#e7d4b1] text-[2rem] font-bold mb-4">
+              Ochayi Peter
+            </h3>
+            <p className="text-[#9C7630] text-[1rem] leading-relaxed">
+              Frontend Developer & Website Designer creating beautiful digital
+              experiences.
+            </p>
+          </motion.div>
+
+          {/* Quick Links */}
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.5 },
+              },
+            }}
+            className="flex flex-col"
+          >
+            <h4 className="text-[#e7d4b1] text-[1.25rem] font-semibold mb-4">
+              Quick Links
+            </h4>
+            <ul className="flex flex-col space-y-2">
+              {["About", "Projects", "Skills", "Contact"].map((item) => (
+                <li key={item}>
+                  <Link
+                    href={`#${item.toLowerCase()}`}
+                    className="text-[#9C7630] hover:text-[#e7d4b1] transition-colors duration-300 text-[1rem]"
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Social Links */}
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.5 },
+              },
+            }}
+            className="flex flex-col"
+          >
+            <h4 className="text-[#e7d4b1] text-[1.25rem] font-semibold mb-4">
+              Connect With Me
+            </h4>
+            <div className="flex flex-wrap gap-3">
+              {[
+                {
+                  name: "Whatsapp",
+                  href: "https://wa.link/orc2s4",
+                },
+                {
+                  name: "LinkedIn",
+                  href: "https://www.linkedin.com/in/peter-ochayi-41a6b3186/",
+                },
+                { name: "Twitter", href: "https://x.com/__medico_" },
+                {
+                  name: "Discord",
+                  href: "https://discord.com/channels/942269085176201278",
+                },
+                { name: "Telegram", href: "https://t.me/@ochmed1" },
+              ].map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#9C7630] hover:text-[#e7d4b1] transition-colors duration-300 text-[0.9rem]"
+                >
+                  {social.name}
+                </a>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Bottom section */}
+        <motion.div
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { duration: 0.8, delay: 0.5 },
+            },
+          }}
+          className="w-full max-w-6xl border-t border-[#3f2728] pt-6 mt-6 flex lg:flex-row flex-col justify-between items-center gap-4"
+        >
+          <p className="text-[#9C7630] text-[0.9rem] text-center lg:text-left">
+            © {new Date().getFullYear()} Ochayi Peter. All rights reserved.
+          </p>
+        </motion.div>
+
+        {/* Scroll to top  */}
+        <motion.a
+          href="#home"
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.5, delay: 0.8 },
+            },
+          }}
+          whileHover={{ scale: 1.1, y: -5 }}
+          whileTap={{ scale: 0.95 }}
+          className="absolute -top-6 right-8 bg-[#e7d4b1] rounded-full p-3 cursor-pointer shadow-lg"
+        >
+          <svg
+            width="24px"
+            height="24px"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 6V18M12 6L7 11M12 6L17 11"
+              stroke="#3f2728"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </motion.a>
+      </motion.footer>
     </div>
   );
 }
