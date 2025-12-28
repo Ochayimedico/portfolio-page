@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import myPic from "../public/me.jpg";
 import whatsapp from "../public/social_media/whatsapp.png";
@@ -42,6 +42,7 @@ const fadeInUpFast = {
     },
   },
 };
+
 const fadeInLeftFast = {
   hidden: { opacity: 0, x: -50 },
   visible: {
@@ -56,6 +57,7 @@ const fadeInLeftFast = {
     },
   },
 };
+
 const fadeInRightFast = {
   hidden: { opacity: 0, x: 50 },
   visible: {
@@ -119,6 +121,15 @@ const springTransition = {
 export default function Home() {
   const [showMenuButton, setShowMenuButton] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+
+  // Add smooth scrolling
+  useEffect(() => {
+    document.documentElement.style.scrollBehavior = "smooth";
+    return () => {
+      document.documentElement.style.scrollBehavior = "auto";
+    };
+  }, []);
+
   const closeMenuHandler = () => {
     setShowMenu(false);
   };
@@ -173,7 +184,7 @@ export default function Home() {
             <Link href="#skills">Skills</Link>
           </li>
           <li className="mx-2 cursor-pointer">
-            <Link href="#contacts">Contacts</Link>
+            <Link href="#contact">Contact</Link>
           </li>
         </ul>
       </motion.nav>
@@ -243,6 +254,7 @@ export default function Home() {
         id="about"
         initial={{ borderRadius: "0" }}
         whileInView={{ borderRadius: "60%/ 10% 10% 0 0" }}
+        viewport={{ once: true }}
         transition={springTransition}
         className="bg-[#3f2728] w-full relative"
       >
@@ -250,6 +262,7 @@ export default function Home() {
           className="mt-2 p-8 text-white text-center md:text-[1.85rem] lg:text-[2.25rem] text-[1.35rem] w-[90%] md:w-[70%] lg:w-[60%] mx-auto"
           initial="hidden"
           whileInView="visible"
+          viewport={{ once: true }}
           variants={staggerContainer}
         >
           <motion.div
@@ -285,6 +298,7 @@ export default function Home() {
       <motion.section
         initial="hidden"
         whileInView="visible"
+        viewport={{ once: true }}
         variants={{
           hidden: {},
           visible: {
@@ -404,6 +418,7 @@ export default function Home() {
         id="projects"
         initial={{}}
         whileInView={{}}
+        viewport={{ once: true }}
         transition={springTransition}
         className="bg-[#3f2728] w-full relative flex flex-col"
       >
@@ -411,6 +426,7 @@ export default function Home() {
           className="mt-2 p-8 text-white text-center md:text-[1.85rem] lg:text-[2.25rem] text-[1.35rem] w-[90%] md:w-[70%] lg:w-[70%] mx-auto"
           initial="hidden"
           whileInView="visible"
+          viewport={{ once: true }}
           variants={staggerContainer}
         >
           <motion.div
@@ -473,6 +489,7 @@ export default function Home() {
         id="skills"
         initial={{}}
         whileInView={{}}
+        viewport={{ once: true }}
         transition={springTransition}
         className="bg-[#e7d4b1] w-full relative flex flex-col"
       >
@@ -480,6 +497,7 @@ export default function Home() {
           className="mt-2 p-8 text-white text-center md:text-[1.85rem] lg:text-[2.25rem] text-[1.35rem] w-[90%] md:w-[70%] lg:w-[70%] mx-auto"
           initial="hidden"
           whileInView="visible"
+          viewport={{ once: true }}
           variants={staggerContainer}
         >
           <motion.div
@@ -577,6 +595,7 @@ export default function Home() {
         id="contact"
         initial={{}}
         whileInView={{}}
+        viewport={{ once: true }}
         transition={springTransition}
         className="bg-[#3f2728] w-full relative flex flex-col items-center justify-center"
       >
@@ -584,6 +603,7 @@ export default function Home() {
           className="mt-2 p-8 text-white text-center md:text-[1.85rem] lg:text-[2.25rem] text-[1.35rem] w-[90%] md:w-[70%] lg:w-[70%] mx-auto"
           initial="hidden"
           whileInView="visible"
+          viewport={{ once: true }}
           variants={staggerContainer}
         >
           <motion.div
@@ -606,6 +626,7 @@ export default function Home() {
         <motion.div
           initial="hidden"
           whileInView="visible"
+          viewport={{ once: true }}
           variants={{
             hidden: {},
             visible: {
@@ -698,10 +719,12 @@ export default function Home() {
           </motion.a>
         </motion.div>
       </motion.section>
+
       {/* Footer */}
       <motion.footer
         initial="hidden"
         whileInView="visible"
+        viewport={{ once: true }}
         variants={{
           hidden: {},
           visible: {
@@ -839,7 +862,7 @@ export default function Home() {
           </p>
         </motion.div>
 
-        {/* Scroll to top  */}
+        {/* Scroll to top */}
         <motion.a
           href="#home"
           variants={{
