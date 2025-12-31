@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import myPic from "../public/me.jpg";
 import whatsapp from "../public/social_media/whatsapp.png";
+import email from "../public/social_media/email.png";
 import discord from "../public/social_media/discord.png";
 import linkedin from "../public/social_media/linkedin.png";
 import telegram from "../public/social_media/telegram.png";
@@ -122,7 +123,7 @@ export default function Home() {
   const [showMenuButton, setShowMenuButton] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
 
-  // Add smooth scrolling
+  // smooth scrolling
   useEffect(() => {
     document.documentElement.style.scrollBehavior = "smooth";
     return () => {
@@ -197,12 +198,12 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="w-full flex flex-row justify-end fixed top-10 z-20 px-10"
+          className="w-full flex flex-row justify-end fixed top-10 z-20 px-10 "
         >
           <motion.div
             whileHover={{ scale: 1.1 }}
             transition={{ duration: 0.5 }}
-            className="bg-[#3f2728] rounded-full w-[50px] h-[50px] items-center flex justify-center"
+            className="bg-[#3f2728] rounded-full w-[50px] h-[50px] items-center flex justify-center shadow-xs shadow-[#e7d4b1]"
           >
             <svg
               width="40px"
@@ -228,13 +229,13 @@ export default function Home() {
         </motion.button>
       )}
 
-      {/* Hero Section */}
+      {/* hero section */}
       <section className="flex w-full h-dvh flex-col items-center justify-center text-[2rem] m-2">
         <p className="absolute uppercase -rotate-90 -left-25 text-sm top-100 tracking-[0.3rem]">
           ochayi peter ago
         </p>
         <div>
-          <h2 className="text-center md:text-[4rem] text-[3rem] lg:text-[5rem] font-bold">
+          <h2 className="text-center md:text-[4rem] text-[2.5rem] lg:text-[5rem] font-bold">
             Hello, I'm Ochayi
           </h2>
           <h3 className="text-center md:text-[2.5rem] text-[2rem] lg:text-[3rem] text-[#1B1508]">
@@ -249,7 +250,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Me */}
+      {/* about me section */}
       <motion.section
         id="about"
         initial={{ borderRadius: "0" }}
@@ -294,7 +295,7 @@ export default function Home() {
         </motion.div>
       </motion.section>
 
-      {/* Picture Section */}
+      {/* picture section */}
       <motion.section
         initial="hidden"
         whileInView="visible"
@@ -655,6 +656,18 @@ export default function Home() {
             </div>
             <p className="my-2">Whatsapp</p>
           </motion.a>
+          <motion.a
+            variants={fadeInUpFast}
+            href="mailto:ochayipeter42@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center my-6 cursor-pointer w-max"
+          >
+            <div className="bg-[#e7d4b1] items-center flex justify-center rounded-2xl w-[60px] h-[60px]">
+              <Image src={email} width={36} height={36} alt="email logo" />
+            </div>
+            <p className="my-2">Email</p>
+          </motion.a>
 
           <motion.a
             variants={fadeInUpFast}
@@ -736,7 +749,6 @@ export default function Home() {
         }}
         className="bg-[#1B1508] w-full relative flex flex-col items-center py-12 px-8"
       >
-        {/* Top decorative line */}
         <motion.div
           variants={{
             hidden: { width: "0%", opacity: 0 },
@@ -750,7 +762,6 @@ export default function Home() {
         />
 
         <div className="max-w-6xl w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 mb-8">
-          {/* Brand Section */}
           <motion.div
             variants={{
               hidden: { opacity: 0, y: 20 },
@@ -771,7 +782,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          {/* Quick Links */}
+          {/* quick links */}
           <motion.div
             variants={{
               hidden: { opacity: 0, y: 20 },
@@ -800,7 +811,7 @@ export default function Home() {
             </ul>
           </motion.div>
 
-          {/* Social Links */}
+          {/* social links */}
           <motion.div
             variants={{
               hidden: { opacity: 0, y: 20 },
@@ -862,7 +873,7 @@ export default function Home() {
           </p>
         </motion.div>
 
-        {/* Scroll to top */}
+        {/* scroll to top */}
         <motion.a
           href="#home"
           variants={{
