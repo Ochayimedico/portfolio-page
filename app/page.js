@@ -140,7 +140,7 @@ export default function Home() {
       title: "Airdrops App",
       year: "2025",
       description:
-        "Allows users to create their own airdrops dashboard where they can add, edit and delete airdrop projects. It uses Supabase as Backend-as-a-Service (BAAS).",
+        "Built a full CRUD dashboard allowing users to create, edit and manage airdrop projects. Integrated Supabase as Backend-as-a-Service for authentication and data storage. Designed responsive user interfaces optimized for mobile, tablet and desktop devices. Focused on clean component structure and maintainable code..",
       link: "http://airdrops.ochayimedico.xyz",
       alignSelf: "start",
     },
@@ -148,7 +148,7 @@ export default function Home() {
       title: "Todos and Tasks App",
       year: "2024",
       description:
-        "Allows users to create their own todos and tasks and users can add, edit and delete tasks or todos. It uses Supabase as Backend-as-a-Service (BAAS).",
+        "Developed a task management application with create, edit, and delete functionality. Implemented Supabase backend integration for real-time data handling. Improved usability through simple UI patterns and performance optimization.",
       link: "http://todosandtasks.ochayimedico.xyz",
       alignSelf: "end",
     },
